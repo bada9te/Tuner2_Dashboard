@@ -1,8 +1,37 @@
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: forest --default;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #171717;
+  --foreground: #ffffff;
+}
+
+@theme {
+  --animate-scroll-bg-mobile: scrollRight 18s ease-in-out infinite;
+  --animate-scroll-bg-pc: scrollTop 1s ease-out forwards;
+
+  @keyframes scrollRight {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0% 0;
+    }
+  }
+
+  @keyframes scrollTop {
+    0% {
+      background-position: 0 200px;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
 }
 
 @theme inline {
