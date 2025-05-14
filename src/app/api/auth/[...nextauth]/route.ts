@@ -1,19 +1,34 @@
-import NextAuth from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth";
 import Discord from "next-auth/providers/discord";
 
-const DISCORD_SCOPES = ['identify'].join(' ');
+const DISCORD_SCOPES = ["identify", "guilds", "email"].join(" ");
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
     providers: [
         Discord({
-            clientId: process.env.DISCORD_CLIENT_ID as string,
-            clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
-            authorization: { params: { scope: DISCORD_SCOPES } }
-        })
+            clientId: process.env.DISCORD_CLIENT_ID!,
+            clientSecret: process.env.DISCORD_CLIENT_SECRET!,
+            authorization: { params: { scope: DISCORD_SCOPES } },
+        }),
     ],
+    callbacks: {
+        async jwt({ token, account }) {
+            if (account?.access_token) {
+                token.accessToken = account.access_token;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            // @ts-ignore
+            session.accessToken = token.accessToken;
+            return session;
+        },
+    },
     pages: {
-        signIn: "/signin"
-    }
-});
+        signIn: "/signin",
+    },
+};
 
-export { handler as GET, handler as POST }
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };

@@ -1,8 +1,9 @@
+"use client"
 import { Geist, Geist_Mono } from "next/font/google";
 import { SessionProvider } from "next-auth/react"
 import "./globals.css";
 import Header from "@/components/header/Header";
-import { DefaultSession, getServerSession } from "next-auth";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,23 +15,28 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const queryClient = new QueryClient();
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession();
   return (
-    <SessionProvider session={session}>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <Header/>
-          {children}
-        </body>
-      </html>
+    <SessionProvider>
+      <QueryClientProvider client={queryClient}>
+        <html lang="en">
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            <Header/>
+            
+            {children}
+            
+            
+          </body>
+        </html>
+      </QueryClientProvider>
     </SessionProvider>
   );
 }

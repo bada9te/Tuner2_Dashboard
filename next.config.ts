@@ -1,12 +1,22 @@
 import type { NextConfig } from "next";
 
+
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
-      new URL('https://cdn.discordapp.com/**')
+      {
+        protocol: 'https',
+        hostname: 'cdn.discordapp.com',
+        pathname: '/icons/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.discordapp.com',
+        pathname: '/avatars/**',
+      },
     ]
-  }
+  },
 };
 
 export default nextConfig;

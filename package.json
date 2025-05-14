@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@discordjs/next": "^0.1.1-dev.1673526225-a580768.0",
+    "@tanstack/react-query": "^5.76.1",
     "lucide-react": "^0.510.0",
     "next": "15.3.2",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "webpack": "^5.99.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.6",

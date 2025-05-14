@@ -1,5 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
+import BotStatus from "../bot-status/BotStatus";
 
 export default function Intro() {
     const { data: session } = useSession();
@@ -11,23 +13,18 @@ export default function Intro() {
             >
                 {`<Dashboard/>`}
             </div>
-            <div>
-                <div className="inline-grid *:[grid-area:1/1]">
-                    <div className="status status-success animate-ping"></div>
-                    <div className="status status-success"></div>
-                </div> <span className="drop-shadow-2xl">Bot is online</span>
-            </div>
+            <BotStatus/>
 
             { 
                 session 
                 ?
-                <button className="
+                <Link href={"/guilds"} className="
                     text-white absolute btn btn-primary border-base-200 bg-base-200 w-full 
                      -bottom-20 md:-bottom-30 text-sm text-center animate-pulse shadow-2xl pl-1 hover:text-primary transition-all"
                 >
                     <Image src={session.user?.image as string} width={200} height={200} className="w-6 rounded-full mr-1 transition-all" alt="discord-logo"/>
-                    {`Continue to dashboard as ${session?.user?.name} >>`}
-                </button>
+                    {`Continue as ${session?.user?.name} >>`}
+                </Link>
                 :
                 <button 
                     className="

@@ -8,7 +8,7 @@ export default function Header() {
     const {data: session} = useSession();
 
     return (
-        <div className="absolute top-4 flex flex-row items-center justify-between w-screen p-4 flex-wrap md:flex-nowrap">
+        <div className="bg-base-100 z-50 fixed top-0 pt-8 flex flex-row items-center justify-between w-screen p-4 flex-wrap md:flex-nowrap">
             <div className="flex items-center justify-center gap-4 md:gap-10 py-3 px-10 bg-neutral rounded-3xl flex-wrap md:flex-nowrap">
                 <Link href={"/authors"} className="hover:text-primary transition-all flex flex-row gap-2 items-center justify-center text-[0px] md:text-sm"><BookOpen size={20}/>Authors</Link>
                 <Link href={"/invite"} className="hover:text-primary transition-all flex flex-row gap-2 items-center justify-center text-[0px] md:text-sm"><LinkIcon size={20}/>Invite bot</Link>
