@@ -4,6 +4,7 @@ import { SessionProvider } from "next-auth/react"
 import "./globals.css";
 import Header from "@/components/header/Header";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import BreadNav from "@/components/bread-nav/BreadNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,8 @@ export default function RootLayout({
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
             <Header/>
-            
+          
             {children}
-            
-            
           </body>
         </html>
       </QueryClientProvider>

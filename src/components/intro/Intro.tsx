@@ -7,7 +7,9 @@ export default function Intro() {
     const { data: session } = useSession();
     return (
         <div className="relative">
-            <span className="text-8xl font-bold drop-shadow-2xl">Tuner2</span>
+            <span className="text-8xl font-bold drop-shadow-2xl">
+                Tuner2
+            </span>
             <div 
                 className="shadow-2xl absolute -right-4 md:-right-20 -top-10 md:top-24 z-0 bg-primary p-2 md:p-4 rounded-3xl text-sm md:text-2xl font-bold text-secondary-content w-fit transition-all"
             >

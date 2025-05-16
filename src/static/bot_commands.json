@@ -1,0 +1,42 @@
+[
+    {
+        "title": "/play",
+        "description": "Plays a song by provided query or attached file.",
+        "parameters": {
+            "query": "Key words, youtube, spotify",
+            "file": "Your audio attachment"
+        }
+    },
+    {
+        "title": "/skip",
+        "description": "Skips currently playing song at the server queue.",
+        "parameters": {}
+    },
+    {
+        "title": "/queue",
+        "description": "Displays the server queue.",
+        "parameters": {}
+    },
+    {
+        "title": "/pause",
+        "description": "Pauses or unpauses the playback.",
+        "parameters": {}
+    },
+    {
+        "title": "/np",
+        "description": "Dsiplays the current song.",
+        "parameters": {}
+    },
+    {
+        "title": "/loop",
+        "description": "Dsiplays the current song.",
+        "parameters": {
+            "mode": "Loop mode"
+        }
+    },
+    {
+        "title": "/clear",
+        "description": "Clears the server queue.",
+        "parameters": {}
+    }
+]
