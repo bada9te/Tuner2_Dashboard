@@ -1,3 +1,5 @@
+"use client"
+
 import { Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -23,7 +25,7 @@ export default function BreadNav() {
         </li>
     ) : (
         <li key={href}>
-            <Link href={href} className="inline-flex items-center gap-1 text-blue-600 hover:underline">
+            <Link href={href} className="inline-flex items-center gap-1 hover:underline">
                 {label}
             </Link>
         </li>

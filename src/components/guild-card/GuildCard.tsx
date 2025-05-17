@@ -1,5 +1,6 @@
 import { guildImageIdToDiscordCDN } from "@/utils/imageIdToDiscordCDN";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 
 type TGuildCard = {
@@ -31,7 +32,7 @@ export default function GuildCard({ id, name, icon }: TGuildCard) {
                 </div>
                 
                 <div className="card-actions justify-center mt-3">
-                    <button className="btn btn-sm btn-primary w-full">Open</button>
+                    <Link href={`/guilds/${id}`} className="btn btn-sm btn-primary w-full">Open</Link>
                 </div>
             </div>
         </div>
