@@ -38,5 +38,19 @@
         "title": "/clear",
         "description": "Clears the server queue.",
         "parameters": {}
+    },
+    {
+        "title": "/seek",
+        "description": "Rewinds the playback back or forward.",
+        "parameters": {
+            "x": "-[seconds] or +[seconds]"
+        }
+    },
+    {
+        "title": "/volume",
+        "description": "Sets the global playback volume.",
+        "parameters": {
+            "x": "Volume from 0 to 100"
+        }
     }
 ]

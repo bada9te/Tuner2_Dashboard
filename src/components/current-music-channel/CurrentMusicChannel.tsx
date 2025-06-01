@@ -1,3 +1,5 @@
+import { ArrowDownUp } from "lucide-react";
+
 export type TChannelData = {
     id: string;
     guild_id: string;
@@ -5,22 +7,29 @@ export type TChannelData = {
     name: string;
 }
 
-export default function CurrentMusicChannel({ data }: { data: TChannelData[] }) {
+export default function CurrentMusicChannel({ data, userIsOwner }: { data: TChannelData[], userIsOwner: boolean }) {
     const handleChannelClick = (id: string, guild_id: string) => {
         console.log({id, guild_id});
     }
 
     return (
-        <ul className="list bg-base-200 rounded-box shadow-md">
+        <ul className="list bg-base-200 rounded-box shadow-md pb-2">
             <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Current music channel</li>
             
-            <li className="list-row">
+            <li className="list-row relative">
                 <div>
-                    <div>{data[0].name}</div>
+                    <div className="min-w-24">{data.filter(c => c.type == 0)[0].name}</div>
                     <div className="text-xs uppercase font-semibold opacity-60">Change it here:</div>
                 </div>
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn m-1 btn-primary">Change</div>
+                <div className="dropdown absolute right-4">
+                    <button 
+                        tabIndex={0} 
+                        role="button" 
+                        disabled={!userIsOwner} 
+                        className={`btn btn-primary disabled:opacity-50`}
+                    >
+                        <ArrowDownUp size={18}/>Change
+                    </button>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm">
                         {
                             data.filter(c => c.type == 0).map((channel, key) => {

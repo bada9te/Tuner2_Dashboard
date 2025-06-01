@@ -1,4 +1,5 @@
 import { guildImageIdToDiscordCDN } from "@/utils/imageIdToDiscordCDN";
+import { BookOpenText } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -32,7 +33,7 @@ export default function GuildCard({ id, name, icon }: TGuildCard) {
                 </div>
                 
                 <div className="card-actions justify-center mt-3">
-                    <Link href={`/guilds/${id}`} className="btn btn-sm btn-primary w-full">Open</Link>
+                    <Link href={`/guilds/${id}`} className="btn btn-sm btn-primary w-full"><BookOpenText size={18}/>Open</Link>
                 </div>
             </div>
         </div>

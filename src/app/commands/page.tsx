@@ -39,9 +39,9 @@ export default function Commands() {
                                 transition={{ duration: 0.4 }}
                             >
                                 <BotCommand
-                                title={command.title}
-                                description={command.description}
-                                parameters={new Map(Object.entries(command.parameters))}
+                                    title={command.title}
+                                    description={command.description}
+                                    parameters={new Map(Object.entries(command.parameters))}
                                 />
                             </motion.div>
                         ))}

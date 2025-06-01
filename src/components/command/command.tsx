@@ -6,7 +6,7 @@ export default function BotCommand({
     return (
         <div className="card bg-primary text-primary-content w-80 shadow-2xl">
             <div className="card-body">
-                <h2 className="card-title text-gray-300">{title}</h2>
+                <h2 className="card-title">{title}</h2>
                 <p>{description}</p>
                 
                 {
