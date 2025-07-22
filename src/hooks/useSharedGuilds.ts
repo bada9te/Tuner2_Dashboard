@@ -14,12 +14,15 @@ const fetchSharedGuilds = async (session: Session | null) => {
 
     const userGuilds = await userRes.json() as any[];
 
+    console.log({userGuilds})
+
     const botRes = await fetch("/api/discord/bot/guilds");
     if (!botRes.ok) {
         throw new Error('Failed to fetch bot guilds');
     }
 
     const botGuilds = await botRes.json() as any[];
+    console.log({botGuilds})
 
     return botGuilds.filter(guild => userGuilds.map(i => i.id).includes(guild.id));
 };

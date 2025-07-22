@@ -3,7 +3,7 @@ import { Session } from 'next-auth';
 
 
 const fetchGuildChannels = async (id: string) => {
-     const res = await fetch(`/api/discord/bot/channels`, { 
+    const res = await fetch(`/api/discord/bot/channels`, { 
         method: 'GET',
         headers: {
             guild_id: id

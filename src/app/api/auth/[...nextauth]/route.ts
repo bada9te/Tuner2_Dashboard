@@ -16,11 +16,13 @@ export const authOptions: NextAuthOptions = {
             if (account?.access_token) {
                 token.accessToken = account.access_token;
             }
+
             return token;
         },
         async session({ session, token }) {
             // @ts-ignore
             session.accessToken = token.accessToken;
+            
             return session;
         },
     },

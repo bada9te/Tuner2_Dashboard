@@ -7,26 +7,11 @@ import CurrentMusicChannelSkeleton from "@/components/current-music-channel/Curr
 import PlaylistCard from "@/components/playlist-card/PlaylistCard";
 import useGuildChannles from "@/hooks/useGuildChannels";
 import useSharedGuilds from "@/hooks/useSharedGuilds";
+import useUserPlaylists from "@/hooks/useUserPlaylists";
 import { PackagePlus } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useParams } from "next/navigation";
-import React, { useEffect } from "react";
-
-
-const mockPlaylists = [
-    {
-        title: "Playlist 1",
-        amountOfSongs: 3
-    },
-    {
-        title: "Playlist 2",
-        amountOfSongs: 110
-    },
-    {
-        title: "Playlist 3",
-        amountOfSongs: 890
-    }
-];
+import React from "react";
 
 
 export default function GuildInfoPage() {
@@ -36,13 +21,16 @@ export default function GuildInfoPage() {
     const { data: guilds } = useSharedGuilds(session);
 
     // TODO: get currently selected channel from the DB
+    const { data: playlists, isLoading } = useUserPlaylists(session);
 
+    console.log({ session })
+    
     return (
         <div className="mt-28 p-0 md:py-5 md:px-10 w-full h-full flex flex-row flex-wrap items-center justify-center md:justify-start gap-5 bg-base-100">
             <BreadNav/>
             <BotStatus absolute/>
             <div className="w-full h-dvh flex flex-col md:flex-row flex-nowrap items-center md:items-start justify-start md:justify-start gap-5">
-                <div className="min-w-[285px] h-full flex flex-col gap-5">
+                <div className="min-w-[285px] h-fit md:h-full flex flex-col gap-5">
                     <CurrentGuildInfo guild={guilds?.find(i => i.id == id)}/>
                     {
                         guildChannles 
@@ -61,11 +49,20 @@ export default function GuildInfoPage() {
                         <PackagePlus/> New Playlist
                     </button>
                     {
-                        mockPlaylists.map((pl, key) => {
-                            return (
-                                <PlaylistCard {...pl} key={key}/>
-                            );
-                        })
+                        isLoading ?
+                        "Fetching playlists..." :
+                        (() => {
+                            if (playlists?.length) {
+                                return playlists.map((pl, key) => {
+                                    return (
+                                        <PlaylistCard {...pl} key={key}/>
+                                    );
+                                })
+                            } else {
+                                return "No playlists"
+                            }
+                        })()
+  
                     }
                 </div>
             </div>
