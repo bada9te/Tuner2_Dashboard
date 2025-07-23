@@ -1,26 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { Session } from "next-auth";
+import useDiscordUser from "./useDiscordUser";
 
-export async function getDiscordUser(accessToken: string) {
-    const response = await fetch("https://discord.com/api/users/@me", {
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    });
 
-    if (!response.ok) {
-        throw new Error("Failed to fetch Discord user");
-    }
-
-    const user = await response.json();
-    return user;
-}
-
-const fetchUserPlaylists = async(session: Session) => {
-    const user = await getDiscordUser(session.accessToken as string);
-
-    console.log({ user });
-
+const fetchUserPlaylists = async(session: Session, user: any) => {
     if (!user) {
         throw new Error("No discord user found at api");
     }
@@ -42,10 +25,12 @@ const fetchUserPlaylists = async(session: Session) => {
 }
 
 const useUserPlaylists = (session: Session | null) => {
+    const { data: user } = useDiscordUser(session);
+
     return useQuery({
         queryKey: [`user-playlists`],
-        queryFn: async() => await fetchUserPlaylists(session as Session),
-        enabled: session !== null,
+        queryFn: async() => await fetchUserPlaylists(session as Session, user),
+        enabled: session !== null && user !== null,
         retryDelay: 2000,
     });
 }

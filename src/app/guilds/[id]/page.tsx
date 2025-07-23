@@ -1,6 +1,7 @@
 "use client"
 import BotStatus from "@/components/bot-status/BotStatus";
 import BreadNav from "@/components/bread-nav/BreadNav";
+import CreatePlaylistModal from "@/components/create-playlist-modal/CreatePlaylistModal";
 import CurrentGuildInfo from "@/components/current-guild-info/CurrentGuildInfo";
 import CurrentMusicChannel, { TChannelData } from "@/components/current-music-channel/CurrentMusicChannel";
 import CurrentMusicChannelSkeleton from "@/components/current-music-channel/CurrentMusicChannelSkeleton";
@@ -42,12 +43,9 @@ export default function GuildInfoPage() {
                 </div>
                 
 
-                <div className="pb-10 px-5 w-full max-w-[320px] md:max-w-full md:w-[calc(100%-285px)] h-fit flex flex-row flex-wrap items-start justify-start gap-5">
+                <div className="pb-10 px-5 w-full max-w-[320px] md:max-w-full md:w-[calc(100%-285px)] h-fit flex flex-row flex-wrap items-start justify-start gap-4">
 
-                    <button className="w-full h-24 btn btn-ghost border-dashed border-2 border-primary hover:bg-base-200 rounded-2xl"
-                    >
-                        <PackagePlus/> New Playlist
-                    </button>
+                    <CreatePlaylistModal/>
                     {
                         isLoading ?
                         "Fetching playlists..." :
@@ -62,7 +60,7 @@ export default function GuildInfoPage() {
                                 return "No playlists"
                             }
                         })()
-  
+
                     }
                 </div>
             </div>
