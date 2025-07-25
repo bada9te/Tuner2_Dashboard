@@ -24,7 +24,7 @@ const fetchSharedGuilds = async (session: Session | null) => {
     const botGuilds = await botRes.json() as any[];
     console.log({botGuilds})
 
-    return botGuilds.filter(guild => userGuilds.map(i => i.id).includes(guild.id));
+    return userGuilds.filter(guild => botGuilds.map(i => i.id).includes(guild.id));
 };
 
 const useSharedGuilds = (session: Session | null) => {

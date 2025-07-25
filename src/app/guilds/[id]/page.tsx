@@ -23,8 +23,6 @@ export default function GuildInfoPage() {
 
     // TODO: get currently selected channel from the DB
     const { data: playlists, isLoading } = useUserPlaylists(session);
-
-    console.log({ session })
     
     return (
         <div className="mt-28 p-0 md:py-5 md:px-10 w-full h-full flex flex-row flex-wrap items-center justify-center md:justify-start gap-5 bg-base-100">
@@ -36,7 +34,7 @@ export default function GuildInfoPage() {
                     {
                         guildChannles 
                         ?
-                        <CurrentMusicChannel data={guildChannles} userIsOwner={false}/>
+                        <CurrentMusicChannel data={guildChannles} userIsOwner={guilds?.find(i => i.id == id).owner}/>
                         :
                         <CurrentMusicChannelSkeleton/>
                     }

@@ -49,7 +49,7 @@ export default function CreatePlaylistModal() {
 
             {/* Put this part before </body> tag */}
             <input type="checkbox" id="my_modal_7" className="modal-toggle" />
-            <div ref={ref} className="modal" role="dialog">
+            <div ref={ref} className="modal modal-bottom md:modal-middle" role="dialog">
                 <div className="modal-box">
                     <form noValidate onSubmit={handleSubmit(onSubmit)}>
                         <h3 className="text-lg font-bold">New playlist</h3>

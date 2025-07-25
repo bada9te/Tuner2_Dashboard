@@ -19,8 +19,6 @@ export async function getDiscordUser(accessToken: string) {
 const fetchUser = async(session: Session) => {
     const user = await getDiscordUser(session.accessToken as string);
 
-    console.log({ user });
-
     if (!user) {
         throw new Error("No discord user found at api");
     }

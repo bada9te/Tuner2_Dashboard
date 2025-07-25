@@ -1,4 +1,5 @@
-import { CogIcon, Delete, TrashIcon } from "lucide-react";
+import { CogIcon, Delete, Play, PlayCircle, TrashIcon } from "lucide-react";
+import ConfirmActionModal from "../confirm-action-modal/ConfirmActionModal";
 
 type TPlaylistProps = {
     name: string;
@@ -8,15 +9,21 @@ type TPlaylistProps = {
 }
 
 export default function PlaylistCard({ name, color, songs }: TPlaylistProps) {
-    console.log({color})
     return (
         <div className={`card image-full w-80 shadow-2xl mb-1`} style={{ backgroundColor: color }}>
             <div className={`card-body relative`}>
                 <h2 className="card-title">{name}</h2>
                 <p>{songs.length} songs</p>
-                <div className="card-actions justify-end join gap-0 shadow-2xl">
-                    <button className="join-item btn btn-sm btn-ghost shadow-2xl backdrop-blur-md bg-gray-600/30"><CogIcon size={16}/>Configure</button>
-                    <button className="join-item btn btn-sm btn-ghost shadow-2xl backdrop-blur-md bg-red-600/30"><TrashIcon size={16}/></button>
+                <div className="card-actions justify-end gap-1">
+                    <button className="h-10 btn btn-sm btn-ghost shadow-2xl backdrop-blur-md bg-gray-600/30"><Play size={16}/></button>
+                    <ConfirmActionModal
+                        confirmTextDescription="Delete this playlist?"
+                        confirmTextOnBtn="Yes, delete"
+                        handleConfirm={() => {}}
+                        openButton={
+                            <span className="h-10 btn btn-sm btn-ghost shadow-2xl backdrop-blur-md bg-red-600/30 rounded-full"><TrashIcon size={16}/></span>
+                        }
+                    />
                 </div>
             </div>
         </div>
