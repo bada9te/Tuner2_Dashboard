@@ -33,7 +33,7 @@ export default function BreadNav() {
   });
 
   return (
-    <div className="breadcrumbs text-sm">
+    <div className="breadcrumbs text-sm max-w-[280px] md:max-w-full">
       <ul>
         <li>
           <Link href="/" className="flex items-center justify-center">

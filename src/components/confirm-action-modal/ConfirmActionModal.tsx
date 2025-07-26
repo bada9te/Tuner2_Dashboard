@@ -33,8 +33,8 @@ export default function ConfirmActionModal({
             </label>
 
             {/* Put this part before </body> tag */}
-            <input ref={ref} type="checkbox" id="my_modal_confirm" className="modal-toggle" />
-            <div className="modal modal-bottom md:modal-middle" role="dialog">
+            <input ref={ref} type="checkbox" id="my_modal_confirm" className="modal-toggle z-50" />
+            <div className="modal modal-bottom md:modal-middle z-50" role="dialog">
                 <div className="modal-box">
                     <h3 className="text-lg font-bold">Confirm action</h3>
                     <span>{confirmTextDescription}</span> 
